@@ -5,12 +5,12 @@
       "chainId": "5",
       "contracts": {
         "Attack": {
-          "address": "0x13aE3e3205A82488bBd61dB91ead321E03b81800",
+          "address": "0x381F82d0D52FCB8AE61cdba96a90335341721532",
           "abi": [
             {
               "inputs": [
                 {
-                  "internalType": "contract IChallenge",
+                  "internalType": "address",
                   "name": "challenge_",
                   "type": "address"
                 }
@@ -46,7 +46,7 @@
               "name": "challenge",
               "outputs": [
                 {
-                  "internalType": "contract IChallenge",
+                  "internalType": "contract Challenge",
                   "name": "",
                   "type": "address"
                 }

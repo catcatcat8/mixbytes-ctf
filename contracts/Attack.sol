@@ -2,13 +2,13 @@
 pragma solidity ^0.8.0;
 
 import '@openzeppelin/contracts/access/Ownable.sol';
-import {IChallenge} from './IChallenge.sol';
+import './Challenge.sol';
 
 contract Attack is Ownable {
-    IChallenge public challenge;
+    Challenge public challenge;
 
-    constructor(IChallenge challenge_) {
-        challenge = challenge_;
+    constructor(address challenge_) {
+        challenge = Challenge(challenge_);
     }
 
     fallback() external {
