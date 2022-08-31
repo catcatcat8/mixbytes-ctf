@@ -5,13 +5,13 @@
       "chainId": "5",
       "contracts": {
         "Attack": {
-          "address": "0x381F82d0D52FCB8AE61cdba96a90335341721532",
+          "address": "0x7392Ae1f764F22Cb61326d712858D8CD5C9755A1",
           "abi": [
             {
               "inputs": [
                 {
-                  "internalType": "address",
-                  "name": "challenge_",
+                  "internalType": "address payable",
+                  "name": "bank_",
                   "type": "address"
                 }
               ],
@@ -38,15 +38,11 @@
               "type": "event"
             },
             {
-              "stateMutability": "nonpayable",
-              "type": "fallback"
-            },
-            {
               "inputs": [],
-              "name": "challenge",
+              "name": "bank",
               "outputs": [
                 {
-                  "internalType": "contract Challenge",
+                  "internalType": "contract Bank2",
                   "name": "",
                   "type": "address"
                 }
@@ -55,16 +51,17 @@
               "type": "function"
             },
             {
-              "inputs": [
-                {
-                  "internalType": "address",
-                  "name": "me_",
-                  "type": "address"
-                }
-              ],
-              "name": "hack",
+              "inputs": [],
+              "name": "hack1",
               "outputs": [],
-              "stateMutability": "nonpayable",
+              "stateMutability": "payable",
+              "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "hack2",
+              "outputs": [],
+              "stateMutability": "payable",
               "type": "function"
             },
             {
@@ -99,6 +96,17 @@
               "outputs": [],
               "stateMutability": "nonpayable",
               "type": "function"
+            },
+            {
+              "inputs": [],
+              "name": "withdraw",
+              "outputs": [],
+              "stateMutability": "nonpayable",
+              "type": "function"
+            },
+            {
+              "stateMutability": "payable",
+              "type": "receive"
             }
           ]
         }

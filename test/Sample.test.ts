@@ -1,6 +1,6 @@
 import { BigNumber, BigNumberish } from 'ethers'
 
-import { Token, Example } from '../typechain'
+import { Attack, Bank2 } from '../typechain'
 import { HARDHAT_ACCS_PUB_KEYS } from '../hardhat.config'
 
 import { expect } from 'chai'
@@ -14,13 +14,17 @@ import {
   time,
   network,
 } from 'hardhat'
+import { BNToNumstr } from '../gotbit-tools/hardhat/extensions/bignumber'
+
+const nonExistentFuncSignature =
+  'nonExistentFunction(uint256,uint256)';
 
 async function setup() {
-  await deployments.fixture(['Token', 'Example'])
+  await deployments.fixture(['Bank2', 'Attack'])
 
   const contracts = {
-    token20: (await ethers.getContract('Token')) as Token,
-    exampleContract: (await ethers.getContract('Example')) as Example,
+    bank: (await ethers.getContract('Bank2')) as Bank2,
+    attack: (await ethers.getContract('Attack')) as Attack,
   }
 
   const { deployer, backend, feeAddress } = await getNamedAccounts()
@@ -37,10 +41,23 @@ async function setup() {
 describe('Example unit test', () => {
   const token = BigNumber.from(10).pow(18)
   describe('Constructor', () => {
-    it('Should successfully define passed parameters to fields', async () => {
-      const { token20, exampleContract, deployer, backend, feeAddress } = await setup()
-      expect(await exampleContract.token()).to.be.equal(token20.address)
-      expect(feeAddress.address).to.be.equal(HARDHAT_ACCS_PUB_KEYS[2])
+    it('Hack', async () => {
+      const { bank, attack, deployer, backend, feeAddress, users } = await setup()
+      const userSigner = ethers.getSigner(deployer.address)
+
+      console.log(BNToNumstr(await ethers.provider.getBalance(bank.address), 18, 4));
+      await deployer.attack.hack1({value: ethers.utils.parseEther("0.005")})
+      console.log(BNToNumstr(await ethers.provider.getBalance(bank.address), 18, 4));
+      await deployer.attack.hack2({value: ethers.utils.parseEther("0.005")})
+      console.log(BNToNumstr(await ethers.provider.getBalance(bank.address), 18, 4));
+
+      console.log(BNToNumstr(await ethers.provider.getBalance(deployer.address), 18, 4));
+      await deployer.attack.withdraw()
+      console.log(BNToNumstr(await ethers.provider.getBalance(deployer.address), 18, 4));
+
+      // console.log(BNToNumstr(await ethers.provider.getBalance(users[0].address), 18, 4));
+      // await deployer.attack.hack()
+      // console.log(BNToNumstr(await ethers.provider.getBalance(users[0].address), 18, 4));
     })
   })
 })

