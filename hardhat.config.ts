@@ -69,6 +69,7 @@ export const config: HardhatUserConfig = {
       chainId: 56,
       forking: {
         url: CHAIN_TAG ? node(CHAIN_TAG).rpc : '',
+        enabled: false
         // blockNumber:
       },
       accounts: [

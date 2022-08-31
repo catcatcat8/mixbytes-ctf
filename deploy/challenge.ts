@@ -8,9 +8,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const { deploy } = deployments
   const { deployer } = await getNamedAccounts()
 
-  const challenge = await hre.ethers.getContract('Challenge')
-
-  await deploy('Attack', {
+  await deploy('Challenge', {
     from: deployer,
     args: [],
     log: true,
@@ -18,5 +16,4 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 }
 export default func
 
-func.tags = ['Attack']
-func.dependencies = ['Challenge']
+func.tags = ['Challenge']

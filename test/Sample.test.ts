@@ -1,6 +1,6 @@
 import { BigNumber, BigNumberish } from 'ethers'
 
-import { Token, Example } from '../typechain'
+import { Challenge, Attack } from '../typechain'
 import { HARDHAT_ACCS_PUB_KEYS } from '../hardhat.config'
 
 import { expect } from 'chai'
@@ -16,11 +16,11 @@ import {
 } from 'hardhat'
 
 async function setup() {
-  await deployments.fixture(['Token', 'Example'])
+  await deployments.fixture(['Challenge', 'Attack'])
 
   const contracts = {
-    token20: (await ethers.getContract('Token')) as Token,
-    exampleContract: (await ethers.getContract('Example')) as Example,
+    challenge: (await ethers.getContract('Challenge')) as Challenge,
+    attack: (await ethers.getContract('Attack')) as Attack,
   }
 
   const { deployer, backend, feeAddress } = await getNamedAccounts()
@@ -38,9 +38,11 @@ describe('Example unit test', () => {
   const token = BigNumber.from(10).pow(18)
   describe('Constructor', () => {
     it('Should successfully define passed parameters to fields', async () => {
-      const { token20, exampleContract, deployer, backend, feeAddress } = await setup()
-      expect(await exampleContract.token()).to.be.equal(token20.address)
-      expect(feeAddress.address).to.be.equal(HARDHAT_ACCS_PUB_KEYS[2])
+      const { challenge, attack, deployer, backend, feeAddress, users } = await setup()
+      console.log(await attack.flag());
+      await users[0].attack.hack(challenge.address);
+      console.log(await attack.flag());
+      // console.log(await challenge.flag());
     })
   })
 })
