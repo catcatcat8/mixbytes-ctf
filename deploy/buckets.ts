@@ -10,13 +10,13 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 
 //   const bank = await hre.ethers.getContract("Bank2")
 
-  await deploy('FaucetAttack', {
+  await deploy('Buckets', {
     from: deployer,
-    args: ["0x9db6A88A8333530453d0b30B60DAd09DcC50a807"],
+    args: [],
     log: true,
   })
 }
 export default func
 
-func.tags = ['FaucetAttack']
+func.tags = ['Buckets']
 // func.dependencies = ['Bank2']
