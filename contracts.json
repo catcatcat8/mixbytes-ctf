@@ -208,17 +208,9 @@
               "type": "receive"
             }
           ]
-        }
-      }
-    }
-  ],
-  "56": [
-    {
-      "name": "hardhat",
-      "chainId": "56",
-      "contracts": {
+        },
         "Buckets": {
-          "address": "0x604acb84eDCa69e254BeF05128827d51D3dfc7C9",
+          "address": "0x78B72e20C2fAFbf4BF71BB57c928c60f079057Ad",
           "abi": [
             {
               "inputs": [],
@@ -573,8 +565,20 @@
             }
           ]
         },
+        "BucketsAttack": {
+          "address": "0xb5923039Df253F888A77badC2DE1B93BD5c0dcd9",
+          "abi": [
+            {
+              "inputs": [],
+              "name": "totalSupply",
+              "outputs": [],
+              "stateMutability": "pure",
+              "type": "function"
+            }
+          ]
+        },
         "BucketsProxy": {
-          "address": "0x736863590755F513d441c8c9d175F02Bf4e47346",
+          "address": "0xd5E618f921Fe744402e3b01712C651D9EFE81AF6",
           "abi": [
             {
               "inputs": [

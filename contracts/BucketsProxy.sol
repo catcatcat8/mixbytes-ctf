@@ -4,7 +4,6 @@ pragma solidity ^0.8.0;
 import '@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol';
 import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
 import '@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol';
-import 'hardhat/console.sol';
 
 contract BucketsProxy is ERC1967Proxy {
     // a secret to change the proxy admin in case of an emergency

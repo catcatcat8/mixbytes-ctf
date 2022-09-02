@@ -1,0 +1,48 @@
+{
+  "address": "0xb5923039Df253F888A77badC2DE1B93BD5c0dcd9",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "totalSupply",
+      "outputs": [],
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x40e36d75270f9f0abaec6976f53d6132a86249661b1d17bab24097e438f69549",
+  "receipt": {
+    "to": null,
+    "from": "0x6EF1032E74B0371BAa3cA64878d8984eFd1B7453",
+    "contractAddress": "0xb5923039Df253F888A77badC2DE1B93BD5c0dcd9",
+    "transactionIndex": 10,
+    "gasUsed": "76747",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0xd2a89892cfc1947e4ca3bf5536b86b3a583f62c88b8ea25db9d5aa59c499bbb5",
+    "transactionHash": "0x40e36d75270f9f0abaec6976f53d6132a86249661b1d17bab24097e438f69549",
+    "logs": [],
+    "blockNumber": 7516581,
+    "cumulativeGasUsed": "969943",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "61c3f9717b38f1c555f3f9ef76c5b53e",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.10+commit.fc410830\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[],\"stateMutability\":\"pure\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/BucketsAttack.sol\":\"BucketsAttack\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/BucketsAttack.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.0;\\n\\ncontract BucketsAttack {\\n    function totalSupply() external pure {\\n        revert();\\n    }\\n}\",\"keccak256\":\"0x524a9acab1d8e96c8bc386af05ae68eb072f0ad62cc579a73ac25e286cfb3d7f\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50606c80601d6000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c806318160ddd14602d575b600080fd5b6034600080fd5b00fea26469706673582212204dcd3dd4a1989854288f24787fbb77e1d2098495d81de937dc5d3451a3b3139064736f6c634300080a0033",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060285760003560e01c806318160ddd14602d575b600080fd5b6034600080fd5b00fea26469706673582212204dcd3dd4a1989854288f24787fbb77e1d2098495d81de937dc5d3451a3b3139064736f6c634300080a0033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [],
+    "types": null
+  }
+}

