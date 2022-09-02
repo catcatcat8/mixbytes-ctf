@@ -1,22 +1,20 @@
 import { HardhatRuntimeEnvironment } from 'hardhat/types'
 import { DeployFunction } from 'hardhat-deploy/types'
 
-import { ethers } from 'hardhat'
+import { ethers, getUnnamedAccounts } from 'hardhat'
 
 const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const { deployments, getNamedAccounts } = hre
   const { deploy } = deployments
   const { deployer } = await getNamedAccounts()
+  const users = await getUnnamedAccounts()
 
-//   const bank = await hre.ethers.getContract("Bank2")
-
-  await deploy('FaucetAttack', {
+  await deploy('ProfitableBusinessAttack', {
     from: deployer,
-    args: ["0x9db6A88A8333530453d0b30B60DAd09DcC50a807"],
+    args: [],
     log: true,
   })
 }
 export default func
 
-func.tags = ['FaucetAttack']
-// func.dependencies = ['Bank2']
+func.tags = ['ProfitableBusinessAttack']
