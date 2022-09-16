@@ -3,8 +3,15 @@
         "instance": "0x866d0461173957Aeb968BF431eaa6A3c9157BE92",
         "attack": "0x7392Ae1f764F22Cb61326d712858D8CD5C9755A1"
     },
+    "2_Proxy": {
+        "instance": "0x9A848B15f31A36F1B2683E3f20A00ef70C3c2d21"
+    },
     "3_Faucet": {
         "instance": "0x9db6A88A8333530453d0b30B60DAd09DcC50a807",
         "attack": "0xA45a38f4e30d9B9506c731847E222561849d0cb8"
+    },
+    "5_MMM": {
+        "instance": "0x29c779055a7197Ba6eA02756F45658B89Eb5cD14",
+        "attack": "0x1a9d37872d453e4ebCcb54d425c2472258100996"
     }
 }

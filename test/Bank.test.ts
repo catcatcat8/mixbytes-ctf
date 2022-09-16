@@ -1,15 +1,10 @@
-import { BigNumber, BigNumberish } from 'ethers'
+import { BigNumber } from 'ethers'
 
 import { BankAttack, Bank2 } from '../typechain'
-import { HARDHAT_ACCS_PUB_KEYS } from '../hardhat.config'
-
-import { expect } from 'chai'
 
 import { setupUser, setupUsers } from './utils/index'
 import { ethers, deployments, getNamedAccounts, getUnnamedAccounts, time, network } from 'hardhat'
 import { BNToNumstr } from '../gotbit-tools/hardhat/extensions/bignumber'
-
-const nonExistentFuncSignature = 'nonExistentFunction(uint256,uint256)'
 
 async function setup() {
   await deployments.fixture(['Bank2', 'Attack'])
@@ -31,11 +26,9 @@ async function setup() {
 }
 
 describe('Example unit test', () => {
-  const token = BigNumber.from(10).pow(18)
   describe('Constructor', () => {
     it('Hack', async () => {
-      const { bank, attack, deployer, backend, feeAddress, users } = await setup()
-      const userSigner = ethers.getSigner(deployer.address)
+      const { bank, deployer } = await setup()
 
       console.log(BNToNumstr(await ethers.provider.getBalance(bank.address), 18, 4))
       await deployer.attack.hack1({ value: ethers.utils.parseEther('0.005') })
