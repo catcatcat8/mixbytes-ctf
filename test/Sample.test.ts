@@ -6,18 +6,10 @@ import { HARDHAT_ACCS_PUB_KEYS } from '../hardhat.config'
 import { expect } from 'chai'
 
 import { setupUser, setupUsers } from './utils/index'
-import {
-  ethers,
-  deployments,
-  getNamedAccounts,
-  getUnnamedAccounts,
-  time,
-  network,
-} from 'hardhat'
+import { ethers, deployments, getNamedAccounts, getUnnamedAccounts, time, network } from 'hardhat'
 import { BNToNumstr } from '../gotbit-tools/hardhat/extensions/bignumber'
 
-const nonExistentFuncSignature =
-  'nonExistentFunction(uint256,uint256)';
+const nonExistentFuncSignature = 'nonExistentFunction(uint256,uint256)'
 
 async function setup() {
   await deployments.fixture(['Bank2', 'Attack'])
@@ -45,19 +37,15 @@ describe('Example unit test', () => {
       const { bank, attack, deployer, backend, feeAddress, users } = await setup()
       const userSigner = ethers.getSigner(deployer.address)
 
-      console.log(BNToNumstr(await ethers.provider.getBalance(bank.address), 18, 4));
-      await deployer.attack.hack1({value: ethers.utils.parseEther("0.005")})
-      console.log(BNToNumstr(await ethers.provider.getBalance(bank.address), 18, 4));
-      await deployer.attack.hack2({value: ethers.utils.parseEther("0.005")})
-      console.log(BNToNumstr(await ethers.provider.getBalance(bank.address), 18, 4));
+      console.log(BNToNumstr(await ethers.provider.getBalance(bank.address), 18, 4))
+      await deployer.attack.hack1({ value: ethers.utils.parseEther('0.005') })
+      console.log(BNToNumstr(await ethers.provider.getBalance(bank.address), 18, 4))
+      await deployer.attack.hack2({ value: ethers.utils.parseEther('0.005') })
+      console.log(BNToNumstr(await ethers.provider.getBalance(bank.address), 18, 4))
 
-      console.log(BNToNumstr(await ethers.provider.getBalance(deployer.address), 18, 4));
+      console.log(BNToNumstr(await ethers.provider.getBalance(deployer.address), 18, 4))
       await deployer.attack.withdraw()
-      console.log(BNToNumstr(await ethers.provider.getBalance(deployer.address), 18, 4));
-
-      // console.log(BNToNumstr(await ethers.provider.getBalance(users[0].address), 18, 4));
-      // await deployer.attack.hack()
-      // console.log(BNToNumstr(await ethers.provider.getBalance(users[0].address), 18, 4));
+      console.log(BNToNumstr(await ethers.provider.getBalance(deployer.address), 18, 4))
     })
   })
 })

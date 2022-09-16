@@ -5,7 +5,7 @@ import '@openzeppelin/contracts/access/Ownable.sol';
 import 'hardhat/console.sol';
 import './Bank2.sol';
 
-contract Attack is Ownable {
+contract BankAttack is Ownable {
     Bank2 public bank;
 
     constructor(address payable bank_) {
