@@ -1,7 +1,7 @@
 import { defineConfig } from './gotbit-tools/hardhat/config'
 import { defaultRpc } from './gotbit-tools/hardhat/rpc'
 
-const DEFAULT_ETH_RPC: string = 'https://rinkeby.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161'
+const DEFAULT_ETH_RPC: string = 'https://rpc.ankr.com/eth_goerli'
 const DEFAULT_BSC_RPC: string = 'https://data-seed-prebsc-1-s1.binance.org:8545/'
 
 const DEFAULT_HARDHAT_ACCS_PR_KEYS: string[] = [

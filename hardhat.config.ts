@@ -12,7 +12,7 @@ import { genNetworks, genCompilers, node } from './gotbit-tools/hardhat'
 import { HARDHAT_ACCS_PR_KEYS } from './secrets.config'
 import { chainIds, ChainTag } from './gotbit-tools/hardhat/types'
 
-const ACC_PUBKEY: string = '0x6EF1032E74B0371BAa3cA64878d8984eFd1B7453'
+const ACC_PUBKEY: string = '0x666B99107032D52A3cf05DCB660F1C981973be23'
 
 export const HARDHAT_ACCS_PUB_KEYS: string[] = [
   '0xF22a4BF45BBfde23c9EBf64357DFDe96A5aEFad4',
