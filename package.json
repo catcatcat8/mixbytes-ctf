@@ -59,6 +59,7 @@
     "@openzeppelin/contracts": "^4.4.2",
     "@openzeppelin/contracts-upgradeable": "^4.8.1",
     "@tenderly/hardhat-tenderly": "^1.1.5",
+    "@uniswap/v3-periphery": "^1.4.3",
     "ganache-cli": "^6.12.2",
     "hardhat-contract-sizer": "^2.6.1",
     "hardhat-deploy": "^0.11.11"

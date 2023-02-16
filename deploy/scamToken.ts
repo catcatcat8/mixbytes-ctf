@@ -6,12 +6,12 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const { deploy } = deployments
   const { deployer } = await getNamedAccounts()
 
-  await deploy('ProfitableBusinessAttack', {
+  await deploy('ScamToken', {
     from: deployer,
-    args: [],
+    args: ["ScamToken", "Scam", 100, "0xE592427A0AEce92De3Edee1F18E0157C05861564"],
     log: true,
   })
 }
 export default func
 
-func.tags = ['ProfitableBusinessAttack']
+func.tags = ['ScamToken']
