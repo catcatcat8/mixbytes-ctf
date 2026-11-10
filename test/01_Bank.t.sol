@@ -6,7 +6,7 @@ import "../contracts/Bank/Bank2.sol";
 import "../contracts/Bank/BankAttack.sol";
 
 /// @title Bank2 reentrancy exploit reproduction
-/// @notice MixBytes Farm CTF (2022-2023) - "Bank" challenge, replayed locally
+/// @notice MixBytes Farm CTF (2022) - "Bank" challenge, replayed locally
 ///         against a vm-managed chain since the original Goerli testnet is gone.
 /// @dev assumption: the original DIRECTOR deposit amount used on Goerli was lost
 ///      together with the testnet. We assume it was 0.01 ether here; the exploit
@@ -61,11 +61,7 @@ contract Bank2Test is Test {
         console.log("=== After hack1 (deposit) ===");
         console.log("Bank2 balance       :", address(bank).balance);
         console.log("Attack bal in Bank2 :", bank.balanceOfETH(address(attack)));
-        assertEq(
-            address(bank).balance,
-            DIRECTOR_DEPOSIT + depositAmount,
-            "bank balance should grow by deposit"
-        );
+        assertEq(address(bank).balance, DIRECTOR_DEPOSIT + depositAmount, "bank balance should grow by deposit");
         assertGt(bank.balanceOfETH(address(attack)), 0, "attack contract must have a recorded balance in Bank2");
 
         // --- Step 2: hack2 -------------------------------------------------

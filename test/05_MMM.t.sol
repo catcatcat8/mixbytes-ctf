@@ -6,10 +6,10 @@ import "../contracts/MMM/ProfitableBusiness.sol";
 import "../contracts/MMM/ProfitableBusinessAttack.sol";
 
 /// @title ProfitableBusiness ("MMM") majority-owner takeover exploit reproduction
-/// @notice MixBytes Farm CTF (2022-2023) - "MMM" challenge, replayed locally
+/// @notice MixBytes Farm CTF (2022) - "MMM" challenge, replayed locally
 ///         against a vm-managed chain since the original Goerli testnet is gone.
 /// @dev This reproduces the exploit previously performed manually via
-///      scripts/5_attackMMM.ts (now removed from history):
+///      scripts/5_attackMMM.ts (removed from the repository):
 ///
 ///      1. `ethTotalSupply()` returns the raw `address(this).balance`, with no
 ///         protection against ETH being pushed into the contract outside of

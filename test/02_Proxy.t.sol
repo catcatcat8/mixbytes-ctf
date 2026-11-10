@@ -5,7 +5,7 @@ import "forge-std/Test.sol";
 import "../contracts/Proxy/BucketsProxy.sol";
 
 /// @title BucketsProxy storage-collision exploit reproduction
-/// @notice MixBytes Farm CTF (2022-2023) - "Proxy" challenge, replayed locally
+/// @notice MixBytes Farm CTF (2022) - "Proxy" challenge, replayed locally
 ///         against a vm-managed chain since the original Goerli testnet is gone.
 /// @dev Goal (per original README): make `Buckets(Proxy.address).totalSupply()`
 ///      break - i.e. force the proxy's delegatecall to fail/produce garbage.
@@ -102,7 +102,11 @@ contract ProxyTest is Test {
         console.log("=== After deposit(index) into the colliding slot ===");
         console.log("EIP-1967 impl slot (after)   :", uint256(implSlotAfter));
 
-        assertEq(uint256(implSlotAfter), uint256(implSlotBefore) + 1, "implementation slot should have been incremented by 1 wei");
+        assertEq(
+            uint256(implSlotAfter),
+            uint256(implSlotBefore) + 1,
+            "implementation slot should have been incremented by 1 wei"
+        );
         assertTrue(
             address(uint160(uint256(implSlotAfter))) != address(implementation),
             "implementation address must now be corrupted"

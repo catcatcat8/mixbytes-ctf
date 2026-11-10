@@ -6,7 +6,7 @@ import "../contracts/Faucet/Faucet.sol";
 import "../contracts/Faucet/FaucetAttack.sol";
 
 /// @title Faucet fake-EOA + reentrancy exploit reproduction
-/// @notice MixBytes Farm CTF (2022-2023) - "Faucet" challenge, replayed locally
+/// @notice MixBytes Farm CTF (2022) - "Faucet" challenge, replayed locally
 ///         against a vm-managed chain since the original Goerli testnet is gone.
 /// @dev assumption: the original Faucet deposit amount used on Goerli was lost
 ///      together with the testnet. We assume it was 0.01 ether here, i.e.
