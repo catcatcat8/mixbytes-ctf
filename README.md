@@ -7,7 +7,7 @@ My solutions to the smart contract CTF from the MixBytes Farm course (2022). Eac
 
 ## Overview
 
-The course gave 5 vulnerable contracts deployed on the Goerli testnet. For each one the goal was to find the bug and exploit it. I solved 4 of the 5. Goerli has since been shut down, so the exploits are now replayed locally and all run with a single `forge test`.
+This repository contains my solutions to four challenges from the course. Each challenge was a vulnerable contract deployed on the Goerli testnet, and the goal was to find the bug and exploit it. Goerli has since been shut down, so the exploits are now replayed locally and all run with a single `forge test`.
 
 ## Challenges
 
@@ -16,8 +16,7 @@ The course gave 5 vulnerable contracts deployed on the Goerli testnet. For each 
 | 1 | Bank | Drain the contract or call `setCompleted()` | Reentrancy | [BankAttack.sol](contracts/Bank/BankAttack.sol) | [01_Bank.t.sol](test/01_Bank.t.sol) |
 | 2 | Proxy | Break `Buckets(proxy).totalSupply()` | Storage slot collision | in the test | [02_Proxy.t.sol](test/02_Proxy.t.sol) |
 | 3 | Faucet | Drain the contract | `extcodesize` check bypass + reentrancy | [FaucetAttack.sol](contracts/Faucet/FaucetAttack.sol) | [03_Faucet.t.sol](test/03_Faucet.t.sol) |
-| 4 | Airdrop | — | — | Not solved | — |
-| 5 | MMM | Drain the contract | Balance manipulation via `selfdestruct` | [ProfitableBusinessAttack.sol](contracts/MMM/ProfitableBusinessAttack.sol) | [05_MMM.t.sol](test/05_MMM.t.sol) |
+| 4 | MMM | Drain the contract | Balance manipulation via `selfdestruct` | [ProfitableBusinessAttack.sol](contracts/MMM/ProfitableBusinessAttack.sol) | [04_MMM.t.sol](test/04_MMM.t.sol) |
 
 ## 1. Bank
 
@@ -83,7 +82,7 @@ The goal is to drain the faucet.
 
 Do not rely on `extcodesize` to detect an EOA (it is trivially bypassed from a constructor; `tx.origin == msg.sender` is also not a universal test). Reset `users[msg.sender]` before the external call and add a reentrancy guard.
 
-## 5. MMM
+## 4. MMM
 
 Contract: [ProfitableBusiness.sol](contracts/MMM/ProfitableBusiness.sol) — Exploit: [ProfitableBusinessAttack.sol](contracts/MMM/ProfitableBusinessAttack.sol)
 
@@ -148,7 +147,7 @@ The initial deposit amounts for the Bank, Faucet, and MMM contracts were not kep
 │   ├── 01_Bank.t.sol
 │   ├── 02_Proxy.t.sol
 │   ├── 03_Faucet.t.sol
-│   └── 05_MMM.t.sol
+│   └── 04_MMM.t.sol
 ├── lib/                 # forge-std, openzeppelin-contracts, openzeppelin-contracts-upgradeable (git submodules)
 └── foundry.toml
 ```
